@@ -1,0 +1,60 @@
+<form>
+
+  <div class="container">
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="examType">Exam Type</label><br>
+        <select id="examType">
+          <option *ngFor="let exam of exams" value="{{exam.id}}">{{exam.name}}</option>
+        </select>
+      </div>
+      <div class="form-group col-6">
+        <label for="studentId">Pupil</label><br>
+        <select id="examstudentIdType">
+          <option *ngFor="let student of students" value="{{student.id}}">{{student.name student.regNo}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="form-group col-3">
+        <label for="math">Math</label>
+        <input type="number" class="form-control" id="math" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="english">English</label>
+        <input type="number" class="form-control" id="english" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="kiswahili">Kiswahili</label>
+        <input type="number" class="form-control" id="kiswahili" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="biology">Biology</label>
+        <input type="number" class="form-control" id="biology" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="chemistry">Chemistry</label>
+        <input type="number" class="form-control" id="chemistry" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="physics">Physics</label>
+        <input type="number" class="form-control" id="physics" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="agriculture">Agriculture</label>
+        <input type="number" class="form-control" id="agriculture" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="geography">Geography</label>
+        <input type="number" class="form-control" id="geography" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+      <div class="form-group col-3">
+        <label for="computerStudies">Computer Studies</label>
+        <input type="number" class="form-control" id="computerStudies" aria-describedby="emailHelp" placeholder="marks">
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+</form>
