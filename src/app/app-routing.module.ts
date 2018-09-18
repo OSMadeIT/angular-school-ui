@@ -1,3 +1,5 @@
+import { NewStudentComponent } from './new-student/new-student.component';
+import { StudentsComponent } from './students/students.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResultsComponent } from './results/results.component';
@@ -6,7 +8,9 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
    
 const routes: Routes = [
   { path: 'results', component: ResultsComponent },
-  { path: 'enter-results', component: EnterResultsComponent }
+  { path: 'enter-results', component: EnterResultsComponent },
+  { path: 'students', component: StudentsComponent },
+  { path: 'students/register', component: NewStudentComponent }
 ];
 
 @NgModule({
