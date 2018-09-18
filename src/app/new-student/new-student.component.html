@@ -19,7 +19,7 @@
           <label for="regNo">Reg Number</label>
           <input type="number" class="form-control" id="regNo" name="regNo" [(ngModel)]="regNo" aria-describedby="regNoHelp" placeholder="regNo">
         </div>
-        <button class="btn btn-primary btn-block" type="button" (click)="addStudent()">Save</button>
+        <button class="btn btn-primary btn-block" type="button" (click)="addStudent()" routerLink="/students">Save</button>
       </div>
     </div>
   </form>

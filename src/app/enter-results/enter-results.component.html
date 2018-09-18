@@ -1,22 +1,27 @@
+<div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-block" routerLink="/students">View Students</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-block" routerLink="/exams">View Exams</button>
+    </div>
+  </div><br>
 <form>
-
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="form-group col-6">
         <label for="examType">Exam Type</label><br>
-        <select id="examType">
+        <select id="examType" class="form-control">
           <option *ngFor="let exam of exams" value="{{exam.id}}" name="examId">{{exam.name}}</option>
         </select>
       </div>
       <div class="form-group col-6">
         <label for="studentId">Pupil</label><br>
-        <select id="examstudentIdType">
+        <select id="examstudentIdType" class="form-control">
           <option *ngFor="let student of students" value="{{student.id}}" name="studentId">{{student.regNo +' '+student.firstName +' '+ student.lastName}}</option>
         </select>
       </div>
     </div>
-  </div>
-  <div class="container">
     <div class="row">
       <div class="form-group col-3">
         <label for="math">Math</label>

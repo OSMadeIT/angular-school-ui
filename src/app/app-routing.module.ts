@@ -7,6 +7,7 @@ import { EnterResultsComponent } from './enter-results/enter-results.component';
 
    
 const routes: Routes = [
+  { path: '', component: StudentsComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'enter-results', component: EnterResultsComponent },
   { path: 'students', component: StudentsComponent },
