@@ -1,7 +1,14 @@
 import { Exams } from './../exams';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +20,9 @@ export class ExamService {
 
   getExams(): Observable<Exams[]>{
     return this.http.get<Exams[]>(this.examsUrl + 'list');
+  }
+
+  postExams(exam: Exams): Observable<Exams>{
+    return this.http.post<Exams>(this.examsUrl +'create',  exam, httpOptions);
   }
 }
