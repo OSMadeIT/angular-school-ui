@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <input type="file" class="btn btn-primary btn-block" (change)="onFileChange($event)" multiple="false">
+      <input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls" />
     </div>
     <div class="col">
       <button type="button" class="btn btn-primary btn-block" routerLink="/students">View Students</button>
@@ -34,14 +34,13 @@
         <input type="number" class="form-control" id="regNo" name="regNo" [(ngModel)]="regNo" aria-describedby="regNoHelp"
           placeholder="regNo">
       </div>
-      <button class="btn btn-primary btn-block" type="button" (click)="addStudent()">Save</button>
+      <button class="btn btn-primary" type="button" (click)="addStudent()">Save</button>
     </div>
   </div>
-</form>
+</form><br>
 
-<input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls"/>
-<button class="btn btn-primary btn-block" type="button" id="upload">Save Upload</button>
-<table class="sjs-table">
+<button class="btn btn-primary" type="button" id="upload">Save Upload</button>
+<table class="sjs-table table table-bordered">
   <tr *ngFor="let row of data">
     <td *ngFor="let val of row">
       {{val}}

@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';  
+import { HttpClientModule } from '@angular/common/http';
+import { ChartModule } from 'angular2-highcharts';  
 
 import { AppComponent } from './app.component';
 import { ResultsComponent } from './results/results.component';
@@ -26,6 +27,7 @@ import { ExamComponent } from './exam/exam.component';
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
     AppRoutingModule,
+    ChartModule.forRoot(require('highcharts')
   ],
   providers: [],
   bootstrap: [AppComponent]

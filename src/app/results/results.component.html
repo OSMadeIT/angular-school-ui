@@ -1,29 +1,36 @@
 <div class="row">
-    <div class="col">
-      <button type="button" class="btn btn-primary btn-block" routerLink="/students">View Students</button>
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-primary btn-block" routerLink="/enter-results">Record Results</button>
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-primary btn-block" routerLink="/exams">View Exams</button>
-    </div>
-  </div><br>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Result #</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Exam Name</th>
-      <th scope="col">Total Mark</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let result of results">
-      <th scope="row">{{result.id}}</th>
-      <td>{{result.studentId.firstName +" "+ result.studentId.lastName}}</td>
-      <td>{{result.examId.name}}</td>
-      <td>{{result.totalMark}}</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="col">
+    <button type="button" class="btn btn-primary btn-block" routerLink="/students">View Students</button>
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary btn-block" routerLink="/enter-results">Record Results</button>
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary btn-block" routerLink="/exams">View Exams</button>
+  </div>
+</div><br>
+<div class="row">
+  <div class="col">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Result #</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Exam Name</th>
+          <th scope="col">Total Mark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results">
+          <th scope="row">{{result.id}}</th>
+          <td>{{result.studentId.firstName +" "+ result.studentId.lastName}}</td>
+          <td>{{result.examId.name}}</td>
+          <td>{{result.totalMark}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <chart [options]="options"></chart>
+  </div>
+</div>

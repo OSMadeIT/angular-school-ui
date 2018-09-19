@@ -8,8 +8,8 @@
     </div>
     <div class="row">
       <div class="col">
-        <input type="file" class="btn btn-primary btn-block" (change)="onFileChange($event)" multiple="false">
-      </div>
+          <input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls"/>
+        </div>
       <div class="col">
         <button type="button" class="btn btn-primary btn-block" routerLink="/students">View Students</button>
       </div>
@@ -33,11 +33,14 @@
         <button class="btn btn-primary btn-block" type="button" (click)="addExam()">Save</button>
       </div>
     </div>
-  </form>
+  </form><br>
   
-  <input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls"/>
-  <button class="btn btn-primary btn-block" type="button" id="upload">Save Upload</button>
-  <table class="sjs-table">
+  <table class="sjs-table table table-bordered">
+    <tr>
+      <td>  
+        <button class="btn btn-primary" type="button" id="upload">Save Upload</button>
+      </td>
+    </tr>
     <tr *ngFor="let row of data">
       <td *ngFor="let val of row">
         {{val}}
