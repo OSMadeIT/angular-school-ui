@@ -34,12 +34,13 @@
         <input type="number" class="form-control" id="regNo" name="regNo" [(ngModel)]="regNo" aria-describedby="regNoHelp"
           placeholder="regNo">
       </div>
-      <button class="btn btn-primary btn-block" type="button" (click)="addStudent()" routerLink="/students">Save</button>
+      <button class="btn btn-primary btn-block" type="button" (click)="addStudent()">Save</button>
     </div>
   </div>
 </form>
 
 <input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls"/>
+<button class="btn btn-primary btn-block" type="button" id="upload">Save Upload</button>
 <table class="sjs-table">
   <tr *ngFor="let row of data">
     <td *ngFor="let val of row">

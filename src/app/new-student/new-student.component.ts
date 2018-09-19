@@ -17,12 +17,17 @@ export class NewStudentComponent implements OnInit {
   regNo;
   studentBody;
   excelData;
+  uploadBtn;
 
   data: AOA;
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.uploadBtn = document.getElementById('upload');
   }
 
   addStudent() {
@@ -56,23 +61,25 @@ export class NewStudentComponent implements OnInit {
 
       /* save data */
       this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
-       this.excelData = (XLSX.utils.sheet_to_json(ws, { header: excelUpload }));
+      this.excelData = (XLSX.utils.sheet_to_json(ws, { header: excelUpload }));
       // console.log(excelData);
-
-      // send data to db
-      for(let i=0; i < this.excelData.length; i++){
-        if(i !== 0){
-          this.studentBody = {
-            regNo: this.excelData[i].regNo,
-            firstName: this.excelData[i].firstName,
-            lastName: this.excelData[i].lastName,
+      this.uploadBtn.addEventListener('click', () => {
+        // send data to db
+        for (let i = 0; i < this.excelData.length; i++) {
+          if (i !== 0) {
+            this.studentBody = {
+              regNo: this.excelData[i].regNo,
+              firstName: this.excelData[i].firstName,
+              lastName: this.excelData[i].lastName,
+            }
           }
-        }
 
-        this.studentService.postStudent(this.studentBody).subscribe((studentData) => {
-          console.log(studentData);
-        });
-      }
+          this.studentService.postStudent(this.studentBody).subscribe((studentData) => {
+            console.log(studentData);
+          });
+        }
+      });
+
     };
     reader.readAsBinaryString(target.files[0]);
   }
