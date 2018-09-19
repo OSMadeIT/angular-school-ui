@@ -3,7 +3,8 @@
     <div class="col">
       <h2>New Student Registration Form</h2>
     </div>
-    <p><a href="http://localhost:8080/angular-school-test/api/excel/get" download>Download</a> students registration file</p>
+    <p><a href="http://localhost:8080/angular-school-test/api/excel/get" download>Download</a> students registration
+      file</p>
   </div>
   <div class="row">
     <div class="col">
@@ -37,3 +38,12 @@
     </div>
   </div>
 </form>
+
+<input type="file" (change)="onFileChange($event)" multiple="false" accept=".xlsx, .xls"/>
+<table class="sjs-table">
+  <tr *ngFor="let row of data">
+    <td *ngFor="let val of row">
+      {{val}}
+    </td>
+  </tr>
+</table>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from './../services/student.service';
-import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
 type AOA = any[][];
@@ -17,18 +16,9 @@ export class NewStudentComponent implements OnInit {
   lastName;
   regNo;
   studentBody;
+  excelData;
 
   data: AOA;
-  jsonData;
-
-  reader;
-  bstr: string;
-  wb: XLSX.WorkBook;
-  wsname: string;
-  ws: XLSX.WorkSheet;
-  vals;
-  studentBtn;
-  value1;
 
   constructor(private studentService: StudentService) { }
 
@@ -36,7 +26,7 @@ export class NewStudentComponent implements OnInit {
   }
 
   addStudent() {
-    
+
     this.studentBody = {
       firstName: this.firstName,
       lastName: this.lastName,
@@ -44,8 +34,47 @@ export class NewStudentComponent implements OnInit {
     }
 
     this.studentService.postStudent(this.studentBody).subscribe((studentData) => {
-        console.log(studentData);
-      });
- }
+      console.log(studentData);
+    });
+  }
+
+  onFileChange(evt: any) {
+    /* wire up file reader */
+    const target: DataTransfer = <DataTransfer>(evt.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+      /* read workbook */
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+
+      /* grab first sheet */
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+      let excelUpload = ['firstName', 'lastName', 'regNo'];
+
+      /* save data */
+      this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
+       this.excelData = (XLSX.utils.sheet_to_json(ws, { header: excelUpload }));
+      // console.log(excelData);
+
+      // send data to db
+      for(let i=0; i < this.excelData.length; i++){
+        if(i !== 0){
+          this.studentBody = {
+            regNo: this.excelData[i].regNo,
+            firstName: this.excelData[i].firstName,
+            lastName: this.excelData[i].lastName,
+          }
+        }
+
+        this.studentService.postStudent(this.studentBody).subscribe((studentData) => {
+          console.log(studentData);
+        });
+      }
+    };
+    reader.readAsBinaryString(target.files[0]);
+  }
 
 }
