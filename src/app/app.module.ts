@@ -27,7 +27,7 @@ import { ExamComponent } from './exam/exam.component';
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
     AppRoutingModule,
-    ChartModule.forRoot(require('highcharts')
+    ChartModule.forRoot(require('highcharts'),
   ],
   providers: [],
   bootstrap: [AppComponent]
